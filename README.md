@@ -1,20 +1,21 @@
-# 🏦 eWallet
+
+🏦 eWallet 
 
 A comprehensive microservices architecture built with Spring Boot that enables seamless money transfers between bank accounts and digital wallets.
-🏗️ Key Adaptations for Your Setup:
-Java 21 Support:
 
-Updated Dockerfiles to use openjdk:21-jdk-slim
-Maven compiler plugin configured for Java 21
+## 🛠️ Technologies
 
-Your Database Configuration:
-
-Bank Service: PostgreSQL on port 5432 with database bank
-Wallet Service: PostgreSQL on port 5433 with database wallet
+- **Java 21**
+- **Spring Boot 3.2**
+- **PostgreSQL** (Dockerized)
+- **Spring Data JPA**
+- **Spring Web**
+- **Lombok**
+- **Docker**
+- **Swagger UI**
 
 
 ✨ Features
-
 ### Bank Service
 - ✅ Create and manage bank accounts
 - ✅ Transfer money from bank to wallet
@@ -36,11 +37,15 @@ Start all services with Docker Compose:
 docker-compose up --build -d
 
 📚 API Documentation
-Bank Service:
-Swagger UI: http://localhost:8081/swagger-ui.html
 
-Wallet Service:
-Swagger UI: http://localhost:8082/swagger-ui.html
+Service	        Port	Database  Port    Swagger UI
+Bank Service	  8081	bank	    5432    http://localhost:8081/swagger-ui.html     
+Wallet Service	8082	wallet	  5433    http://localhost:8082/swagger-ui.html
+
+
+Bank Service Swagger: http://localhost:8081/swagger-ui.html
+Wallet Service Swagger: http://localhost:8082/swagger-ui.html
+
 
 
 
