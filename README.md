@@ -1,4 +1,4 @@
-# 🏦 Bank & Wallet Microservices
+# 🏦 eWallet
 
 A comprehensive microservices architecture built with Spring Boot that enables seamless money transfers between bank accounts and digital wallets.
 🏗️ Key Adaptations for Your Setup:
