@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  bank-db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: bank
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: isam
+    ports:
+      - "5432:5432"
+    networks:
+      - microservice-net
+
+  wallet-db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: wallet
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: isam
+    ports:
+      - "5433:5432"
+    networks:
+      - microservice-net
+
+  bank-service:
+    build:
+      context: ./bankservice  # ✅ Corrected
+    ports:
+      - "8081:8081"
+    depends_on:
+      - bank-db
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://bank-db:5432/bank
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: isam
+      WALLET_SERVICE_URL: http://wallet-service:8082
+    networks:
+      - microservice-net
+
+  wallet-service:
+    build:
+      context: ./walletservice  # ✅ Corrected
+    ports:
+      - "8082:8082"
+    depends_on:
+      - wallet-db
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://wallet-db:5432/wallet
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: isam
+      BANK_SERVICE_URL: http://bank-service:8081
+    networks:
+      - microservice-net
+
+networks:
+  microservice-net:
+    driver: bridge
