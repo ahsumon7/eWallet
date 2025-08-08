@@ -38,13 +38,9 @@ docker-compose up --build -d
 
 📚 API Documentation
 
-Service	        Port	Database  Port    Swagger UI
-Bank Service	  8081	bank	    5432    http://localhost:8081/swagger-ui.html     
-Wallet Service	8082	wallet	  5433    http://localhost:8082/swagger-ui.html
+##Bank Service Swagger: http://localhost:8081/swagger-ui.html
 
-
-Bank Service Swagger: http://localhost:8081/swagger-ui.html
-Wallet Service Swagger: http://localhost:8082/swagger-ui.html
+##Wallet Service Swagger: http://localhost:8082/swagger-ui.html
 
 
 
